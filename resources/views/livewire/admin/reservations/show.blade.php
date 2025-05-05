@@ -571,7 +571,7 @@ new class extends Component {
 							        ? '!bg-orange-300'
 							        : 'bg-red-300') }} border-t"
 						>
-							<td class="px-4 py-2">{{ $payment->date?->format('d/m/Y') ?? '-' }}
+							<td class="px-4 py-2">{{ $payment->date?->format('d/m/Y H:i T') ?? '-' }}
 							</td>
 							<td class="px-4 py-2">{{ number_format($payment->amount, 2) }} €</td>
 							<td class="px-4 py-2">
