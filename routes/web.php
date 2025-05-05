@@ -17,12 +17,10 @@ Route::localize(function () {
         Route::getLocalized('/receipt', [ReservationController::class, 'receipt'])->name('receipt');
 
         Route::postLocalized('payment', [ReservationController::class, 'payment'])->name('payment');
-
     });
-
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::view('/', 'pages.admin.index')->name('index');
     Route::group(['prefix' => 'payments', 'as' => 'payments.'], function () {
         Route::view('/', 'pages.admin.payments.index')->name('index');

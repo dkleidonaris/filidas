@@ -41,8 +41,8 @@ class ReservationForm extends Form
     {
         $this->reservation = $reservation;
 
-        $this->checkin_date = $reservation->checkin_date;
-        $this->checkout_date = $reservation->checkout_date;
+        $this->checkin_date = $reservation->checkin_date->format('Y-m-d');
+        $this->checkout_date = $reservation->checkout_date->format('Y-m-d');
         $this->adult_no = $reservation->adult_no;
         $this->child_no = $reservation->child_no;
         $this->amount = $reservation->amount;

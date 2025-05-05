@@ -87,7 +87,7 @@
 	style="margin: 0; width: 100%; background-color: #f8fafc; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word"
 >
 	<div style="display: none">
-		Μόλις εξοφλήθηκε το τελικό υπόλοιπο της παρακάτω παραγγελίας:
+		Μόλις εξοφλήθηκε η προκαταβολή της παρακάτω κράτησης:
 		&#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
 		&#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
 		&#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
@@ -174,9 +174,9 @@
 									style="border-radius: 8px; background-color: #fffffe; padding: 24px 36px; border: 1px solid #e2e8f0"
 								>
 									<div style="display: flex; justify-content: center">
-										<a href="{{ route('index') }}">
+										<a href="{{route('index')}}">
 											<img
-												src="{{ asset('img_filidas_logo.png') }}"
+												src="{{asset('img_filidas_logo.png')}}"
 												alt="Filidas"
 												style="max-width: 100%; vertical-align: middle; width: 150px"
 												width="150"
@@ -190,7 +190,7 @@
 									<p
 										style="margin: 0 0 24px; font-size: 16px; line-height: 24px; color: #475569"
 									>
-										Μόλις εξοφλήθηκε το τελικό υπόλοιπο της παρακάτω παραγγελίας:
+										Μόλις εξοφλήθηκε η προκαταβολή της παρακάτω παραγγελίας:
 									</p>
 									<div style="background-color: #f1f5f9; padding: 8px">
 										<h2 style="margin-top: 8px; margin-bottom: 8px">Στοιχεία πελάτη</h2>

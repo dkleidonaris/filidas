@@ -87,7 +87,7 @@
     style="margin: 0; width: 100%; background-color: #f8fafc; padding: 0; -webkit-font-smoothing: antialiased; word-break: break-word"
 >
     <div style="display: none">
-        {{ __('mail.reservations.created.see-details') }}
+        Μόλις εξοφλήθηκε το τελικό υπόλοιπο της παρακάτω κράτησης:
         &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
         &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
         &#8199;&#65279;&#847; &#8199;&#65279;&#847; &#8199;&#65279;&#847;
@@ -157,7 +157,7 @@
                 role="none"
             >
                 <tr>
-                    <td style="width: 552px; max-width: 100%">
+                    <td style="width: 800px; max-width: 100%">
                         <div
                             role="separator"
                             style="line-height: 24px"
@@ -177,8 +177,8 @@
                                         style="display: flex; justify-content: center">
                                         <a href="{{ route('index') }}">
                                             <img
-                                                src="{{ asset('img/filidas_logo.png') }}"
-                                                alt="Filidas Apartments"
+                                                src="{{ asset('img_filidas_logo.png') }}"
+                                                alt="Filidas"
                                                 style="max-width: 100%; vertical-align: middle; width: 150px"
                                                 width="150"
                                             >
@@ -190,7 +190,8 @@
                                     >&zwj;</div>
                                     <p
                                         style="margin: 0 0 24px; font-size: 16px; line-height: 24px; color: #475569">
-                                        {{ __('mail.reservations.created.body') }}
+                                        Μόλις εξοφλήθηκε το τελικό υπόλοιπο της
+                                        παρακάτω παραγγελίας:
                                     </p>
                                     <div
                                         style="background-color: #f1f5f9; padding: 8px">
@@ -199,77 +200,41 @@
                                             {{ __('Στοιχεία πελάτη') }}</h2>
                                         <div
                                             style="position: relative; overflow-x: auto">
+                                            <!-- Customer Info Table -->
                                             <table
-                                                class="rtl-text-right dark-text-gray-400"
-                                                style="border-collapse: collapse; width: 100%; text-align: left; font-size: 14px; color: #6b7280"
+                                                style="width: 100%; border-collapse: collapse; text-align: left;"
                                                 cellpadding="0"
                                                 cellspacing="0"
-                                                role="none"
                                             >
+
                                                 <tbody>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            {{ __('Επώνυμο') }}
+                                                    <tr>
+                                                        <th>{{ __('Επώνυμο') }}
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc;">
-                                                            {{ $reservation->customer->last_name }}
+                                                        <td>{{ $payment->reservation->customer->last_name }}
                                                         </td>
                                                     </tr>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            {{ __('Όνομα') }}
+                                                    <tr>
+                                                        <th>{{ __('Όνομα') }}
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc;">
-                                                            {{ $reservation->customer->first_name }}
+                                                        <td>{{ $payment->reservation->customer->first_name }}
                                                         </td>
                                                     </tr>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            {{ __('Χώρα') }}
+                                                    <tr>
+                                                        <th>{{ __('Χώρα') }}
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc;">
-                                                            {{ $reservation->customer->country->name }}
+                                                        <td>{{ $payment->reservation->customer->country->name ?? '-' }}
                                                         </td>
                                                     </tr>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            {{ __('Τηλέφωνο') }}
+                                                    <tr>
+                                                        <th>{{ __('Τηλέφωνο') }}
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc;">
-                                                            {{ $reservation->customer->phone }}
+                                                        <td>{{ $payment->reservation->customer->phone }}
                                                         </td>
                                                     </tr>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            Email
-                                                        </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc;">
-                                                            {{ $reservation->customer->email }}
+                                                    <tr>
+                                                        <th>Email</th>
+                                                        <td>{{ $payment->reservation->customer->email }}
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -287,93 +252,49 @@
                                             {{ __('Στοιχεία κράτησης') }}</h2>
                                         <div
                                             style="position: relative; overflow-x: auto">
+                                            <!-- Reservation Info Table -->
                                             <table
-                                                class="rtl-text-right dark-text-gray-400"
-                                                style="border-collapse: collapse; width: 100%; text-align: left; font-size: 14px; color: #6b7280"
+                                                style="width: 100%; border-collapse: collapse; text-align: left;"
                                                 cellpadding="0"
                                                 cellspacing="0"
-                                                role="none"
                                             >
+
                                                 <tbody>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            Check-in
+                                                    <tr>
+                                                        <th>Check-in
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc;">
-                                                            {{ $reservation->checkin_date->translatedFormat('l j F Y') }}
+                                                        <td>{{ $payment->reservation->checkin_date?->format('d/m/Y') }}
                                                         </td>
                                                     </tr>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            Check-out
+                                                    <tr>
+                                                        <th>Check-out
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc;">
-                                                            {{ $reservation->checkout_date->translatedFormat('l j F Y') }}
+                                                        <td>{{ $payment->reservation->checkout_date?->format('d/m/Y') }}
                                                         </td>
                                                     </tr>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            {{ __('Ενήλικες') }}
+                                                    <tr>
+                                                        <th>{{ __('Ενήλικες') }}
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc;">
-                                                            {{ $reservation->adult_no }}
+                                                        <td>{{ $payment->reservation->adult_no }}
                                                         </td>
                                                     </tr>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            {{ __('Παιδιά') }}
+                                                    <tr>
+                                                        <th>{{ __('Παιδιά') }}
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc;">
-                                                            {{ $reservation->child_no }}
+                                                        <td>{{ $payment->reservation->child_no }}
                                                         </td>
                                                     </tr>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            {{ __('Συνολικό ποσό') }}
+                                                    <tr>
+                                                        <th>{{ __('Συνολικό ποσό') }}
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc; font-weight: 700">
-                                                            {{ $reservation->amount }}
-                                                            €
-                                                        </td>
+                                                        <td><strong>{{ number_format($payment->reservation->amount, 2) }}
+                                                                €</strong></td>
                                                     </tr>
-                                                    <tr
-                                                        style="border-bottom: 1px solid #ccc;">
-                                                        <th
-                                                            scope="row"
-                                                            style="font-weight: bold; padding: 10px; color: #000; text-align: left; border: 1px solid #ccc; background-color: #f9fafb;"
-                                                        >
-                                                            {{ __('Προκαταβολή') }}
+                                                    <tr>
+                                                        <th>{{ __('Προκαταβολή') }}
                                                         </th>
-                                                        <td
-                                                            style="padding: 10px; border: 1px solid #ccc; font-weight: 700">
-                                                            {{ $reservation->deposit }}
-                                                            €
-                                                        </td>
+                                                        <td><strong>{{ number_format($payment->reservation->deposit, 2) }}
+                                                                €</strong></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -383,29 +304,92 @@
                                         role="separator"
                                         style="line-height: 20px"
                                     >&zwj;</div>
-                                    <p style="margin-bottom: 16px">
-                                        {{ __('mail.reservations.created.see-details') }}:
-                                    </p>
+                                    <div
+                                        style="background-color: #f1f5f9; padding: 16px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                                        <h2
+                                            style="margin-top: 8px; margin-bottom: 8px">
+                                            {{ __('Στοιχεία πληρωμής') }}</h2>
+                                        <div
+                                            style="position: relative; overflow-x: auto">
+                                            <!-- Reservation Info Table -->
+                                            <table
+                                                style="width: 100%; border-collapse: collapse; margin-top: 20px;"
+                                                cellpadding="0"
+                                                cellspacing="0"
+                                            >
+                                                <thead
+                                                    style="background-color: #f9fafb;"
+                                                >
+                                                    <tr>
+                                                        <th
+                                                            style="padding: 10px; text-align: left;">
+                                                            {{ __('Ημ/νία πληρωμής') }}
+                                                        </th>
+                                                        <th
+                                                            style="padding: 10px; text-align: left;">
+                                                            {{ __('Ποσό') }}
+                                                        </th>
+                                                        <th
+                                                            style="padding: 10px; text-align: left;">
+                                                            {{ __('Κατάσταση') }}
+                                                        </th>
+                                                        <th
+                                                            style="padding: 10px; text-align: left;">
+                                                            {{ __('Μέθοδος πληρωμής') }}
+                                                        </th>
+                                                        <th
+                                                            style="padding: 10px; text-align: left;">
+                                                            {{ __('Αρ. αναφοράς') }}
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td
+                                                            style="padding: 10px;">
+                                                            {{ $payment->date?->format('d/m/Y') ?? '-' }}
+                                                        </td>
+                                                        <td
+                                                            style="padding: 10px;">
+                                                            {{ number_format($payment->amount, 2) }}
+                                                            €</td>
+                                                        <td
+                                                            style="padding: 10px;">
+                                                            {{ $payment->status === 'CAPTURED' ? __('Επιτυχής') : __('Ανεπιτυχής') }}
+                                                        </td>
+                                                        <td
+                                                            style="padding: 10px;">
+                                                            {{ ucfirst($payment->payment_method) ?? '-' }}
+                                                        </td>
+                                                        <td
+                                                            style="padding: 10px;">
+                                                            {{ $payment->order_id ?? '-' }}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        role="separator"
+                                        style="line-height: 20px"
+                                    >&zwj;</div>
+                                    <p style="margin-bottom: 16px">Επισκεφτείτε
+                                        τη σελίδα διαχείρισης της
+                                        κράτησης:</p>
                                     <div
                                         style="display: flex; justify-content: center">
                                         <a
                                             href="{{ $button_url }}"
                                             class="hover-bg-blue-600"
                                             style="margin-left: auto; margin-right: auto; border-radius: 6px; background-color: #3b82f6; padding: 8px; color: #fffffe; text-decoration: none"
-                                        >{{ __('Η κράτησή μου') }}</a>
+                                        >Σελίδα διαχείρισης</a>
                                     </div>
-                                    <p
-                                        style="margin: 0; font-size: 16px; line-height: 24px; color: #475569">
-                                        {{ __('Με εκτίμηση') }},
-                                        <br>
-                                        <span
-                                            style="font-weight: 600">{{__('Χρήστος')}}</span>
-                                        <br>
-                                        <span>{{ __('Διαμερίσματα FILIDAS') }}</span>
-                                    </p>
                                 </td>
                             </tr>
                         </table>
+
                         <table
                             style="width: 100%"
                             cellpadding="0"

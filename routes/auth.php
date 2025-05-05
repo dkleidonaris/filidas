@@ -1,14 +1,18 @@
 <?php
 
-use App\Http\Controllers\Auth\VerifyEmailController;
-use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+
+Route::middleware('web')->post('logout', [AuthController::class, 'logout'])
+    ->name('logout');
 
 Route::middleware('guest')->group(function () {
     // Volt::route('register', 'pages.auth.register')
     //     ->name('register');
 
-    Route::getLocalized('login', function () {
+    Route::get('login', function () {
         return view('pages.auth.login');
     })
         ->name('login');

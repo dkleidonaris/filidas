@@ -2,15 +2,16 @@
 
 namespace App\Mail;
 
+use App\Models\Payment;
 use App\Models\Reservation;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class BalancePaid extends Mailable implements ShouldQueue
+class CustomerBalancePaid extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -19,9 +20,9 @@ class BalancePaid extends Mailable implements ShouldQueue
     /**
      * Create a new message instance.
      */
-    public function __construct(public Reservation $reservation)
+    public function __construct(public Payment $payment)
     {
-        $this->button_url = route_localized('admin.reservations.show', ['reservation' => $this->reservation], $this->reservation->customer->preferredLocale());
+        $this->button_url = route_localized('reservation.show', ['reservation' => $this->payment->reservation, 'token' => $this->payment->reservation->access_token], $this->payment->reservation->customer->preferredLocale());
     }
 
     /**
@@ -30,7 +31,7 @@ class BalancePaid extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Εξόφληση υπολοίπου',
+            subject: __('Επιτυχής εξόφληση υπολοίπου'),
         );
     }
 
@@ -40,7 +41,7 @@ class BalancePaid extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'mail.reservations.balance-paid',
+            view: 'mail.reservations.customer-balance-paid',
         );
     }
 

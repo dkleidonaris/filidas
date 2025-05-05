@@ -2,10 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Mail\BalancePaid;
 use App\Events\NewPayment;
 use App\Events\ReservationUpdated;
-use App\Mail\DepositPaid;
+use App\Jobs\SendPaymentConfirmation;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,6 +14,12 @@ class CheckReservationStatus implements ShouldQueue
     /**
      * Create the event listener.
      */
+
+    protected $listeners = [
+        'newPayment',
+        'reservationUpdated',
+    ];
+
     public function __construct()
     {
         //
@@ -25,6 +30,12 @@ class CheckReservationStatus implements ShouldQueue
      */
     public function handle(NewPayment|ReservationUpdated $event): void
     {
+        if ($event instanceof NewPayment) {
+            $res = $event->payment->reservation;
+        } elseif ($event instanceof ReservationUpdated) {
+            $res = $event->reservation;
+        }
+
         $res = $event->payment->reservation;
         ray($res);
         $successful_payments = $res->successful_payments;
@@ -32,16 +43,16 @@ class CheckReservationStatus implements ShouldQueue
 
         $amount_paid = $successful_payments->sum('amount');
 
-        ray($amount_paid);
-
         if ($amount_paid >= $res->amount) {
             $res->status = 'paid';
-            Mail::to(env('ADMIN_MAIL'))->send(new BalancePaid($res));
         } elseif ($amount_paid >= $res->deposit) {
             $res->status = 'deposit';
-            Mail::to(env('ADMIN_MAIL'))->send(new DepositPaid($res));
         }
 
         $res->save();
+
+        if ($event instanceof NewPayment) {
+            SendPaymentConfirmation::dispatch($event->payment);
+        }
     }
 }

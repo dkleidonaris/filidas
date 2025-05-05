@@ -173,7 +173,7 @@ new class extends Component {
 					></path>
 				</g>
 			</svg>
-			<p>Επαναποστολή email κράτησης</p>
+			<p>Επαναποστολή email κράτησης εκ νέου στον πελάτη</p>
 		</div>
 	</div>
 	<div class="flex flex-col items-stretch gap-2 rounded-md bg-slate-300 p-2">
@@ -564,11 +564,11 @@ new class extends Component {
 				</thead>
 				<tbody>
 					@forelse($reservationForm->reservation->payments as $payment)
-						<tr class="border-t">
+						<tr class="{{$payment->status === 'CAPTURED' ? 'bg-green-500' : 'bg-red-500'}} border-t">
 							<td class="px-4 py-2">{{ $payment->date?->format('d/m/Y') ?? '-' }}</td>
 							<td class="px-4 py-2">{{ number_format($payment->amount, 2) }} €</td>
 							<td class="px-4 py-2">
-								{{ $payment->status === 'successful' ? __('Επιτυχής') : __('Ανεπιτυχής') }}
+								{{ $payment->status === 'CAPTURED' ? __('Επιτυχής') : __('Ανεπιτυχής') }}
 							</td>
 							<td class="px-4 py-2">{{ ucfirst($payment->payment_method) ?? '-' }}</td>
 							<td class="px-4 py-2">{{ $payment->order_id ?? '-' }}</td>

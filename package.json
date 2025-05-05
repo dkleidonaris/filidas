@@ -22,6 +22,7 @@
         "alpinejs": "^3.14.9",
         "jquery": "^3.7.1",
         "jquery-ui": "^1.14.1",
-        "lightbox2": "^2.11.5"
+        "lightbox2": "^2.11.5",
+        "update": "^0.7.4"
     }
 }

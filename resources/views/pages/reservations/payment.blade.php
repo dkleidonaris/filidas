@@ -39,12 +39,12 @@
 			<h1
 				class="{{ $isSuccess ? 'text-green-600' : 'text-red-600' }} mb-2 text-2xl font-bold"
 			>
-				{{ $isSuccess ? 'Payment Confirmed!' : 'Payment Failed' }}
+				{{ $isSuccess ? __('Επιτυχής πληρωμή') : __('Ανεπιτυχής πληρωμή') }}
 			</h1>
 			<p class="mb-4 text-gray-600">
 				{{ $isSuccess
-				    ? 'Thank you for your payment. Redirecting to your reservation page shortly...'
-				    : 'Unfortunately, your payment could not be processed. Redirecting back to your reservation page...' }}
+				    ? __('payment-success')
+				    : __('payment-failed') }}
 			</p>
 
 			{{-- Spinner --}}
@@ -55,7 +55,7 @@
 			</div>
 
 			<p class="mt-4 text-sm text-gray-500">
-				You will be redirected in <span id="countdown">5</span> seconds...
+				{{__('Θα ανακατευθυνθείτε σε')}} <span id="countdown">5</span> {{__('δευτερόλεπτα')}}...
 			</p>
 		</div>
 

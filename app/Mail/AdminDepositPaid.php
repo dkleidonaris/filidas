@@ -2,24 +2,26 @@
 
 namespace App\Mail;
 
+use App\Models\Payment;
 use App\Models\Reservation;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class DepositPaid extends Mailable implements ShouldQueue
+class AdminDepositPaid extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
+    public $button_url;
     /**
      * Create a new message instance.
      */
-    public function __construct(public Reservation $reservation)
+    public function __construct(public Payment $payment)
     {
-        //
+        $this->button_url = route('admin.reservations.show', [$this->payment->reservation]);
     }
 
     /**
@@ -28,7 +30,7 @@ class DepositPaid extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Εξόφληση προκαταβολής',
+            subject: 'Επιτυχής εξόφληση προκαταβολής',
         );
     }
 
@@ -38,7 +40,7 @@ class DepositPaid extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            view: 'mail.reservations.deposit-paid',
+            view: 'mail.reservations.admin-deposit-paid',
         );
     }
 

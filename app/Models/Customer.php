@@ -21,8 +21,10 @@ class Customer extends Model implements HasLocalePreference
 
     public function preferredLocale(): string
     {
-        if ($this->country->code = 'gr') {
+        if ($this->country->code == 'gr') {
             return 'el';
+        } elseif ($this->country->code == 'it') {
+            return 'it';
         } else {
             return 'en';
         }

@@ -12,7 +12,7 @@ class Reservation extends Model
     /** @use HasFactory<\Database\Factories\ReservationFactory> */
     use HasFactory;
 
-    protected $guarded = ['id', 'access_token'];
+    protected $guarded = ['id'];
 
     protected $casts = [
         'checkin_date' => 'date',
