@@ -324,6 +324,8 @@ new class extends Component {
 					<p>{{ $payment->amount }} €</p>
 					@if ($payment->status == 'CAPTURED')
 						<p>{{ __('Επιτυχής') }}</p>
+					@elseif ($payment->status == 'WAITING')
+					<p>{{ __('Εκκρεμής') }}</p>
 					@else
 						<p>{{ __('Ανεπιτυχής') }}</p>
 					@endif

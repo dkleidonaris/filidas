@@ -315,5 +315,6 @@
     "Επιτυχής εξόφληση υπολοίπου": "Pagamento del saldo completato con successo",
     "Επιτυχής εξόφληση προκαταβολής": "Pagamento dell'acconto completato con successo",
     "mail.payments.deposit-paid": "L'acconto della sua prenotazione è stato pagato con successo.",
-    "mail.payments.balance-paid": "Il saldo della sua prenotazione è stato pagato con successo."
+    "mail.payments.balance-paid": "Il saldo della sua prenotazione è stato pagato con successo.",
+    "Εκκρεμής": "In attesa"
 }

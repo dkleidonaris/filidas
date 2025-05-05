@@ -313,5 +313,6 @@
     "Επιτυχής εξόφληση υπολοίπου": "Successful balance payment",
     "Επιτυχής εξόφληση προκαταβολής": "Successful deposit payment",
     "mail.payments.deposit-paid": "Your booking deposit has been successfully paid.",
-    "mail.payments.balance-paid": "The remaining balance of your booking has been successfully paid."
+    "mail.payments.balance-paid": "The remaining balance of your booking has been successfully paid.",
+    "Εκκρεμής": "Pending"
 }
