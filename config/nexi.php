@@ -1,7 +1,21 @@
 <?php
 
 return [
-    'merchant_id' => env('NEXI_MERCHANT_ID'),
-    'url' => env('NEXI_URL'),
-    'secret' => env('NEXI_SECRET')
+    'sandbox' => [
+        'mid' => env('NEXI_SANDBOX_MID'),
+        'url' => env('NEXI_SANDBOX_URL', 'https://alphaecommerce-test.cardlink.gr/vpos/shophandlermpi'),
+        'secret' => env('NEXI_SANDBOX_SECRET', 'Cardlink1')
+    ],
+    'live'
+    => [
+            'mid' => env('NEXI_LIVE_MID'),
+            'url' => env('NEXI_LIVE_URL'),
+            'secret' => env('NEXI_LIVE_SECRET')
+        ],
+    'active' => [
+        'mid' => config('nexi.' . env('NEXI_ENV') . '.mid'),
+        'url' => config('nexi.' . env('NEXI_ENV') . '.url'),
+        'secret' => config('nexi.' . env('NEXI_ENV') . '.secret')
+    ]
+
 ];
