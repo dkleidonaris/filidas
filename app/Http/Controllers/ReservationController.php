@@ -81,7 +81,7 @@ class ReservationController extends Controller
             'tx_id' => $data['txId'],
             'status' => $data['status'],
             'date' => Carbon::now(),
-            'payment_method' => $data['payMethod']
+            'payment_method' => (isset($data['payMethod']) ? $data['payMethod'] : '')
         ]);
 
         NewPayment::dispatch($payment);
