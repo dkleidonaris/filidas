@@ -318,7 +318,8 @@ new class extends Component {
 					wire:key="{{ $payment->id }}"
 					class="{{ $payment->status == 'CAPTURED' ? '!bg-green-300' : '' }} {{ $payment->status == 'WAITING' ? 'bg-orange-300' : '' }} 'bg-red-300 grid grid-cols-3 p-2"
 				>
-					<p>{{ $payment->date ? $payment->date->translatedFormat('j/m/Y H:i T') }} : ''
+					<p>
+						{{ $payment->date ? $payment->date->translatedFormat('j/m/Y H:i T') : '' }}
 					</p>
 					<p>{{ $payment->amount }} €</p>
 					@if ($payment->status == 'CAPTURED')
