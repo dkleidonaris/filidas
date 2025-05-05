@@ -117,6 +117,7 @@ new class extends Component {
         $res = $this->reservationForm->create();
         if ($res) {
             ReservationCreated::dispatch($res);
+			$this->redirect(route('admin.reservations.show', [$res]));
         } else {
             $this->dispatch('flash-message', ['type' => 'danger', 'message' => 'Προέκυψε πρόβλημα']);
         }
