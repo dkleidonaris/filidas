@@ -12,10 +12,5 @@ return [
             'url' => env('NEXI_LIVE_URL'),
             'secret' => env('NEXI_LIVE_SECRET')
         ],
-    'active' => [
-        'mid' => config('nexi.' . env('NEXI_ENV') . '.mid'),
-        'url' => config('nexi.' . env('NEXI_ENV') . '.url'),
-        'secret' => config('nexi.' . env('NEXI_ENV') . '.secret')
-    ]
-
+    'active_env' => env('NEXI_ENV', 'sandbox'),
 ];

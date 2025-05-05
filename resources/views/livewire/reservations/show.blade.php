@@ -55,7 +55,7 @@ new class extends Component {
     public function mount($reservation)
     {
         $this->version = 2;
-        $this->mid = config('nexi.active.mid');
+        $this->mid = config('nexi.' . config('nexi.active_env') . '.mid');
         $this->lang = App::getLocale();
         $this->orderDesc = 'reservation-' . $reservation->customer->last_name . '-' . $reservation->customer->first_name;
         $this->currency = 'EUR';
@@ -86,7 +86,7 @@ new class extends Component {
         }
 
         $this->orderId = Str::random(20);
-        $digestString = $this->version . $this->mid . $this->lang . $this->orderId . $this->orderDesc . $this->orderAmount . $this->currency . $this->payerEmail . $this->confirmUrl . $this->cancelUrl . config('nexi.active.secret');
+        $digestString = $this->version . $this->mid . $this->lang . $this->orderId . $this->orderDesc . $this->orderAmount . $this->currency . $this->payerEmail . $this->confirmUrl . $this->cancelUrl . config('nexi.' . config('nexi.active_env') . '.secret');
         $digest = base64_encode(hash('sha256', $digestString, true));
 
         $this->dispatch('submit-payment-form', [
@@ -113,7 +113,7 @@ new class extends Component {
 
         $this->orderAmount = $this->amount_remaining;
         $this->orderId = Str::random(20);
-        $digestString = $this->version . $this->mid . $this->lang . $this->orderId . $this->orderDesc . $this->orderAmount . $this->currency . $this->payerEmail . $this->confirmUrl . $this->cancelUrl . config('nexi.secret');
+        $digestString = $this->version . $this->mid . $this->lang . $this->orderId . $this->orderDesc . $this->orderAmount . $this->currency . $this->payerEmail . $this->confirmUrl . $this->cancelUrl . config('nexi.' . config('nexi.active_env') . '.secret');
         $digest = base64_encode(hash('sha256', $digestString, true));
 
         $this->dispatch('submit-payment-form', [
@@ -368,7 +368,7 @@ new class extends Component {
 			@enderror
 			<form
 				id="payment-form"
-				action="{{ config('nexi.active.url') }}"
+				action="{{ config('nexi.' . config('nexi.active_env') . '.url') }}"
 				method="POST"
 				style="display: none;"
 			>
