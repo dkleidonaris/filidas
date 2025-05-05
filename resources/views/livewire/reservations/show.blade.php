@@ -5,6 +5,8 @@ use Livewire\Volt\Component;
 use Livewire\Attributes\Validate;
 use Livewire\Attributes\Locked;
 
+use App\Models\Payment;
+
 use Illuminate\Support\Str;
 
 new class extends Component {
@@ -86,6 +88,13 @@ new class extends Component {
         }
 
         $this->orderId = Str::random(20);
+
+        Payment::create([
+            'reservation_id' => $this->reservation,
+            'amount' => $this->orderAmount,
+            'order_id' => $this->orderId,
+        ]);
+
         $digestString = $this->version . $this->mid . $this->lang . $this->orderId . $this->orderDesc . $this->orderAmount . $this->currency . $this->payerEmail . $this->confirmUrl . $this->cancelUrl . config('nexi.' . config('nexi.active_env') . '.secret');
         $digest = base64_encode(hash('sha256', $digestString, true));
 
@@ -113,6 +122,13 @@ new class extends Component {
 
         $this->orderAmount = $this->amount_remaining;
         $this->orderId = Str::random(20);
+
+        Payment::create([
+            'reservation_id' => $this->reservation,
+            'amount' => $this->orderAmount,
+            'order_id' => $this->orderId,
+        ]);
+
         $digestString = $this->version . $this->mid . $this->lang . $this->orderId . $this->orderDesc . $this->orderAmount . $this->currency . $this->payerEmail . $this->confirmUrl . $this->cancelUrl . config('nexi.' . config('nexi.active_env') . '.secret');
         $digest = base64_encode(hash('sha256', $digestString, true));
 

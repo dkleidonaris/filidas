@@ -67,22 +67,23 @@ class ReservationController extends Controller
 
         $calculatedDigest = base64_encode(hash('sha256', $digestString, true));
 
-        Debugbar::info($calculatedDigest);
-        Debugbar::info($data['digest']);
-
         if ($calculatedDigest !== $data['digest']) {
             abort(403, 'Invalid digest (possible tampering)');
         }
 
-        $payment = Payment::create([
-            'reservation_id' => $reservation->id,
-            'amount' => $data['orderAmount'],
-            'order_id' => $data['orderid'],
-            'tx_id' => $data['txId'],
-            'status' => $data['status'],
-            'date' => Carbon::now(),
-            'payment_method' => (isset($data['payMethod']) ? $data['payMethod'] : '')
-        ]);
+        $payment = Payment::where('order_id', $data['orderid'])->first();
+
+        if ($payment) {
+            $payment->fill([
+                'tx_id' => $data['txId'],
+                'status' => $data['status'],
+                'date' => Carbon::now(),
+                'payment_method' => (isset($data['payMethod']) ? $data['payMethod'] : '')
+            ]);
+            $payment->save();
+        } else {
+            abort(400);
+        }
 
         NewPayment::dispatch($payment);
 
