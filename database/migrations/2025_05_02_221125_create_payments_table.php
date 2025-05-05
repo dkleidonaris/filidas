@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('status')->nullable();
             $table->string('payment_method')->nullable();
 
-            $table->datetime('date');
+            $table->datetime('date')->nullable();
         });
     }
 
