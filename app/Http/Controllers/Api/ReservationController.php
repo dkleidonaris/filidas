@@ -36,6 +36,10 @@ class ReservationController extends Controller
 
         $payment = Payment::where('order_id', $data['orderid'])->first();
 
+        if ($payment->status !== 'WAITING') {
+            return response()->noContent();
+        }
+
         if ($payment) {
             $payment->fill([
                 'tx_id' => $data['txId'],
@@ -50,7 +54,7 @@ class ReservationController extends Controller
 
         NewPayment::dispatch($payment);
 
-        return response()->noContent(); // HTTP 204 No Content
+        return response()->noContent();
 
     }
 }
