@@ -127,6 +127,7 @@ new class extends Component {
             'reservation_id' => $this->reservation,
             'amount' => $this->orderAmount,
             'order_id' => $this->orderId,
+			'status' => 'WAITING'
         ]);
 
         $digestString = $this->version . $this->mid . $this->lang . $this->orderId . $this->orderDesc . $this->orderAmount . $this->currency . $this->payerEmail . $this->confirmUrl . $this->cancelUrl . config('nexi.' . config('nexi.active_env') . '.secret');
