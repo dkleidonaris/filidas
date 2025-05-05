@@ -50,6 +50,7 @@ class ReservationController extends Controller
 
         NewPayment::dispatch($payment);
 
-        return redirect()->route('index');
+        return response()->noContent(); // HTTP 204 No Content
+
     }
 }
