@@ -13,11 +13,14 @@ class Payment extends Model
 
     public $timestamps = false;
 
-    protected $casts= ['date' => 'datetime'];
+    protected $casts = ['date' => 'datetime'];
 
     protected $guarded = ['id'];
 
-    public function reservation(): BelongsTo {
+    protected $with = ['reservation.customer'];
+
+    public function reservation(): BelongsTo
+    {
         return $this->belongsTo(Reservation::class);
     }
 }
