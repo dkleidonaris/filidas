@@ -124,7 +124,7 @@ new class extends Component {
         $this->orderId = Str::random(20);
 
         Payment::create([
-            'reservation_id' => $this->reservation,
+            'reservation_id' => $this->reservation->id,
             'amount' => $this->orderAmount,
             'order_id' => $this->orderId,
 			'status' => 'WAITING'
