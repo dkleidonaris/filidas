@@ -90,9 +90,10 @@ new class extends Component {
         $this->orderId = Str::random(20);
 
         Payment::create([
-            'reservation_id' => $this->reservation,
+            'reservation_id' => $this->reservation->id,
             'amount' => $this->orderAmount,
             'order_id' => $this->orderId,
+            'status' => 'WAITING',
         ]);
 
         $digestString = $this->version . $this->mid . $this->lang . $this->orderId . $this->orderDesc . $this->orderAmount . $this->currency . $this->payerEmail . $this->confirmUrl . $this->cancelUrl . config('nexi.' . config('nexi.active_env') . '.secret');
@@ -127,7 +128,7 @@ new class extends Component {
             'reservation_id' => $this->reservation->id,
             'amount' => $this->orderAmount,
             'order_id' => $this->orderId,
-			'status' => 'WAITING'
+            'status' => 'WAITING',
         ]);
 
         $digestString = $this->version . $this->mid . $this->lang . $this->orderId . $this->orderDesc . $this->orderAmount . $this->currency . $this->payerEmail . $this->confirmUrl . $this->cancelUrl . config('nexi.' . config('nexi.active_env') . '.secret');
@@ -315,7 +316,7 @@ new class extends Component {
 			@foreach ($reservation->payments as $payment)
 				<div
 					wire:key="{{ $payment->id }}"
-					class="{{ $payment->status == 'CAPTURED' ? '!bg-green-300' : '' }} {{$payment->status == 'WAITING' ? 'bg-orange-300' : ''}} 'bg-red-300 grid grid-cols-3 p-2"
+					class="{{ $payment->status == 'CAPTURED' ? '!bg-green-300' : '' }} {{ $payment->status == 'WAITING' ? 'bg-orange-300' : '' }} 'bg-red-300 grid grid-cols-3 p-2"
 				>
 					<p>{{ $payment->date->translatedFormat('j/m/Y H:i T') }}
 					</p>
