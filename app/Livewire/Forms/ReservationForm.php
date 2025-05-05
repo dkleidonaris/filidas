@@ -80,6 +80,6 @@ class ReservationForm extends Form
             'child_no' => $this->child_no,
         ]);
 
-        $this->reservation->save();
+        return $this->reservation->save();
     }
 }
