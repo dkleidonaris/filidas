@@ -315,7 +315,7 @@ new class extends Component {
 			@foreach ($reservation->payments as $payment)
 				<div
 					wire:key="{{ $payment->id }}"
-					class="{{ $payment->status == 'CAPTURED' ? 'bg-green-300' : 'bg-red-300' }} grid grid-cols-3 p-2"
+					class="{{ $payment->status == 'CAPTURED' ? '!bg-green-300' : '' }} {{$payment->status == 'WAITING' ? 'bg-orange-300' : ''}} 'bg-red-300 grid grid-cols-3 p-2"
 				>
 					<p>{{ $payment->date->translatedFormat('j/m/Y H:i T') }}
 					</p>
