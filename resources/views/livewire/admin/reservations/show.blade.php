@@ -137,7 +137,7 @@ new class extends Component {
     public function resendEmail()
     {
         ResendReservationEmailRequest::dispatch($this->reservationForm->reservation);
-		$this->dispatch('flash-message', ['type' => 'success', 'message' => 'Εστάλη!']);
+        $this->dispatch('flash-message', ['type' => 'success', 'message' => 'Εστάλη!']);
     }
 }; ?>
 
@@ -550,9 +550,9 @@ new class extends Component {
 		</div>
 	</div>
 	<div class="mt-4 rounded-md bg-slate-300 p-2">
-		<h2 class="text-2xl font-bold mb-2">{{ __('Πληρωμές') }}</h2>
+		<h2 class="mb-2 text-2xl font-bold">{{ __('Πληρωμές') }}</h2>
 		<div class="overflow-x-auto">
-			<table class="min-w-full text-sm text-left border border-gray-300">
+			<table class="min-w-full border border-gray-300 text-left text-sm">
 				<thead class="bg-gray-100">
 					<tr>
 						<th class="px-4 py-2">{{ __('Ημερομηνία') }}</th>
@@ -564,18 +564,29 @@ new class extends Component {
 				</thead>
 				<tbody>
 					@forelse($reservationForm->reservation->payments as $payment)
-						<tr class="{{$payment->status === 'CAPTURED' ? 'bg-green-500' : 'bg-red-500'}} border-t">
-							<td class="px-4 py-2">{{ $payment->date?->format('d/m/Y') ?? '-' }}</td>
+						<tr
+							class="{{ $payment->status == 'CAPTURED'
+							    ? '!bg-green-300'
+							    : ($payment->status == 'WAITING'
+							        ? '!bg-orange-300'
+							        : 'bg-red-300') }} border-t"
+						>
+							<td class="px-4 py-2">{{ $payment->date?->format('d/m/Y') ?? '-' }}
+							</td>
 							<td class="px-4 py-2">{{ number_format($payment->amount, 2) }} €</td>
 							<td class="px-4 py-2">
 								{{ $payment->status === 'CAPTURED' ? __('Επιτυχής') : __('Ανεπιτυχής') }}
 							</td>
-							<td class="px-4 py-2">{{ ucfirst($payment->payment_method) ?? '-' }}</td>
+							<td class="px-4 py-2">{{ ucfirst($payment->payment_method) ?? '-' }}
+							</td>
 							<td class="px-4 py-2">{{ $payment->order_id ?? '-' }}</td>
 						</tr>
 					@empty
 						<tr>
-							<td colspan="5" class="text-center text-gray-600 px-4 py-3">
+							<td
+								colspan="5"
+								class="px-4 py-3 text-center text-gray-600"
+							>
 								{{ __('Δεν υπάρχουν καταγεγραμμένες πληρωμές.') }}
 							</td>
 						</tr>
@@ -584,5 +595,5 @@ new class extends Component {
 			</table>
 		</div>
 	</div>
-	
+
 </div>
