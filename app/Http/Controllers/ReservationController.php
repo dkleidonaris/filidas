@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\NewPayment;
 use App\Models\Payment;
+use App\Events\NewPayment;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
 
@@ -60,9 +61,14 @@ class ReservationController extends Controller
             (isset($data['payMethod']) ? $data['payMethod'] : '') .
             $data['txId'] .
             (isset($data['paymentRef']) ? $data['paymentRef'] : '') .
-            config('nexi.secret');
+            config('nexi.' . config('nexi.active_env') . '.secret');
+
+        Debugbar::info($digestString);
 
         $calculatedDigest = base64_encode(hash('sha256', $digestString, true));
+
+        Debugbar::info($calculatedDigest);
+        Debugbar::info($data['digest']);
 
         if ($calculatedDigest !== $data['digest']) {
             abort(403, 'Invalid digest (possible tampering)');
