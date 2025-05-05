@@ -44,7 +44,7 @@
 			<p class="mb-4 text-gray-600">
 				{{ $isSuccess
 				    ? __('payment-success')
-				    : __('payment-failed') }}
+				    : __('payment-fail') }}
 			</p>
 
 			{{-- Spinner --}}
