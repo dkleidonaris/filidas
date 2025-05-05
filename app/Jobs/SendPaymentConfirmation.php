@@ -29,11 +29,10 @@ class SendPaymentConfirmation implements ShouldQueue
     public function handle(): void
     {
         if ($this->payment->reservation->status == 'deposit') {
-            Mail::to(env('ADMIN_MAIL'))->send(new AdminDepositPaid($this->payment));
+            Mail::to(config('mail.admin_address'))->send(new AdminDepositPaid($this->payment));
             Mail::to($this->payment->reservation->customer)->send(new CustomerDepositPaid($this->payment));
         } elseif ($this->payment->reservation->status == 'paid') {
-            Mail::to(env('ADMIN_MAIL'))->send(new AdminBalancePaid($this->payment));
-            
+            Mail::to(config('mail.admin_address'))->send(new AdminBalancePaid($this->payment));
             Mail::to($this->payment->reservation->customer)->send(new CustomerBalancePaid($this->payment));
         }
     }
