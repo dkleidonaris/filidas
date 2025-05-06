@@ -38,6 +38,8 @@ class CheckReservationStatus implements ShouldQueue
             $res->status = 'paid';
         } elseif ($amount_paid >= $res->deposit) {
             $res->status = 'deposit';
+        } else {
+            $res->status = 'draft';
         }
 
         $res->save();
