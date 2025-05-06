@@ -35,9 +35,6 @@ class CheckReservationStatus implements ShouldQueue
         } elseif ($event instanceof ReservationUpdated) {
             $res = $event->reservation;
         }
-
-        $res = $event->payment->reservation;
-        ray($res);
         $successful_payments = $res->successful_payments;
         ray($successful_payments);
 
