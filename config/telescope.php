@@ -203,4 +203,6 @@ return [
         Watchers\ScheduleWatcher::class => env('TELESCOPE_SCHEDULE_WATCHER', true),
         Watchers\ViewWatcher::class => env('TELESCOPE_VIEW_WATCHER', true),
     ],
+
+    'log_everything' => env('TELESCOPE_LOG_ALWAYS', false)
 ];

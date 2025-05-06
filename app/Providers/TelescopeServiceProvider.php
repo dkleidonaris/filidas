@@ -20,10 +20,10 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 
         $isLocal = $this->app->environment('local');
 
-        $logAlways = env('TELESCOPE_LOG_ALWAYS');
+        $logEverything = config('telescope.log_everything');
 
-        Telescope::filter(function (IncomingEntry $entry) use ($isLocal) {
-            return $logAlways ||
+        Telescope::filter(function (IncomingEntry $entry) use ($isLocal, $logEverything) {
+            return $logEverything ||
                 $isLocal ||
                 $entry->isReportableException() ||
                 $entry->isFailedRequest() ||
