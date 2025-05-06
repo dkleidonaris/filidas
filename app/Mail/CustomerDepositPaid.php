@@ -21,7 +21,7 @@ class CustomerDepositPaid extends Mailable implements ShouldQueue
      */
     public function __construct(public Payment $payment)
     {
-        $this->button_url = route_localized('reservation.show', ['reservation' => $this->payment->reservation, 'token' => $this->$this->payment->reservation->access_token], $this->payment->reservation->customer->preferredLocale());
+        $this->button_url = route_localized('reservation.show', ['reservation' => $this->payment->reservation, 'token' => $this->payment->reservation->access_token], $this->payment->reservation->customer->preferredLocale());
     }
 
     /**

@@ -17,7 +17,7 @@ class Payment extends Model
 
     protected $guarded = ['id'];
 
-    protected $with = ['reservation.customer'];
+    // protected $with = ['reservation', 'reservation.customer'];
 
     public function reservation(): BelongsTo
     {

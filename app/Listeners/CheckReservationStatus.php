@@ -45,7 +45,8 @@ class CheckReservationStatus implements ShouldQueue
         $res->save();
 
         if ($event instanceof NewPayment) {
-            SendPaymentConfirmation::dispatch($event->payment);
+            $payment = $event->payment->load(['reservation', 'reservation.customer']);
+            SendPaymentConfirmation::dispatch($payment);
         }
     }
 }

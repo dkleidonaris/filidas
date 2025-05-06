@@ -176,7 +176,7 @@
 									<div style="display: flex; justify-content: center">
 										<a href="{{route('index')}}">
 											<img
-												src="{{asset('img_filidas_logo.png')}}"
+												src="{{ asset('img/filidas_logo.png') }}"
 												alt="Filidas"
 												style="max-width: 100%; vertical-align: middle; width: 150px"
 												width="150"
