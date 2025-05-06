@@ -36,25 +36,23 @@ class ReservationController extends Controller
 
         $payment = Payment::where('order_id', $data['orderid'])->first();
 
-        if ($payment->status !== 'WAITING') {
+        if ($payment && $payment->status !== 'WAITING') {
             return response()->noContent();
-        }
-
-        if ($payment) {
-            $payment->fill([
-                'tx_id' => $data['txId'],
-                'status' => $data['status'],
-                'date' => Carbon::now(),
-                'payment_method' => (isset($data['payMethod']) ? $data['payMethod'] : '')
-            ]);
-            $payment->save();
         } else {
             abort(400);
         }
 
+
+        $payment->fill([
+            'tx_id' => $data['txId'],
+            'status' => $data['status'],
+            'date' => Carbon::now(),
+            'payment_method' => (isset($data['payMethod']) ? $data['payMethod'] : '')
+        ]);
+        $payment->save();
+
         NewPayment::dispatch($payment);
 
         return response()->noContent();
-
     }
 }
