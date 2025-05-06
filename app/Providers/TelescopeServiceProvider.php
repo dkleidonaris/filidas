@@ -20,13 +20,16 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 
         $isLocal = $this->app->environment('local');
 
+        $logAlways = env('TELESCOPE_LOG_ALWAYS');
+
         Telescope::filter(function (IncomingEntry $entry) use ($isLocal) {
-            return $isLocal ||
-                   $entry->isReportableException() ||
-                   $entry->isFailedRequest() ||
-                   $entry->isFailedJob() ||
-                   $entry->isScheduledTask() ||
-                   $entry->hasMonitoredTag();
+            return $logAlways ||
+                $isLocal ||
+                $entry->isReportableException() ||
+                $entry->isFailedRequest() ||
+                $entry->isFailedJob() ||
+                $entry->isScheduledTask() ||
+                $entry->hasMonitoredTag();
         });
     }
 
