@@ -12,6 +12,8 @@ Route::localize(function () {
     Route::getLocalized('contact', [PageController::class, 'contact'])->name('contact');
     Route::getLocalized('book', [PageController::class, 'book'])->name('book');
 
+    Route::getLocalized('/my-reservation', [PageController::class, 'my_reservation'])->name('my-reservation');
+
     Route::group(['middleware' => 'reservation_access_check', 'prefix' => 'reservation/{reservation}/{token}', 'as' => 'reservation.'], function () {
         Route::getLocalized('/', [ReservationController::class, 'show'])->name('show');
         Route::getLocalized('/receipt', [ReservationController::class, 'receipt'])->name('receipt');

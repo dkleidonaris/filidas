@@ -36,4 +36,8 @@ class PageController extends Controller
     {
         return view('pages.book');
     }
+
+    public function my_reservation(){
+        return view('pages.reservations.my-reservation');
+    }
 }
