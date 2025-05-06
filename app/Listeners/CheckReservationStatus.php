@@ -15,11 +15,6 @@ class CheckReservationStatus implements ShouldQueue
      * Create the event listener.
      */
 
-    protected $listeners = [
-        'newPayment',
-        'reservationUpdated',
-    ];
-
     public function __construct()
     {
         //
@@ -36,7 +31,6 @@ class CheckReservationStatus implements ShouldQueue
             $res = $event->reservation;
         }
         $successful_payments = $res->successful_payments;
-        ray($successful_payments);
 
         $amount_paid = $successful_payments->sum('amount');
 
