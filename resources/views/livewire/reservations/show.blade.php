@@ -378,7 +378,7 @@ new class extends Component {
 					>{{ __('Εξόφληση προκαταβολής') }} <span
 							class="font-bold italic">({{ $deposit - $amount_payed }} €)</span></p>
 				@endif
-				@if ($amount_remaining)
+				@if ($amount_remaining > 0)
 					<p
 						wire:click="payRemaining"
 						class="cursor-pointer rounded-md bg-green-500 p-2 text-black"
