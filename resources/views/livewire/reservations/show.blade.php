@@ -360,7 +360,7 @@ new class extends Component {
 
 		<div class="mt-4 flex flex-col gap-2 rounded-md border-2 border-white p-2">
 			<h2 class="mb-2 text-xl font-bold">{{ __('Πληρωμή') }}</h2>
-			@if ($deposit - $amount_payed > 0 || $amount_remaining)
+			@if ($deposit - $amount_payed > 0 || $amount_remaining > 0)
 				<div class="flex flex-col gap-2">
 					<p>{{ __('payment-methods') }}</p>
 					<img
