@@ -5,6 +5,7 @@ use App\Models\Customer;
 use App\Models\Country;
 
 use App\Events\ReservationCreated;
+use App\Events\ReservationUpdated;
 use App\Events\ResendReservationEmailRequest;
 
 use App\Livewire\Forms\CustomerForm;
@@ -131,6 +132,7 @@ new class extends Component {
     {
         if ($this->reservationForm->update()) {
             $this->dispatch('flash-message', ['type' => 'success', 'message' => 'Ενημερώθηκε επιτυχώς']);
+			ReservationUpdated::dispatch($this->reservationForm->reservation);
         }
     }
 
