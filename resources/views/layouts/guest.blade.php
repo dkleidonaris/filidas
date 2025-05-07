@@ -36,7 +36,7 @@
 				'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
 			f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer',
-			'{{ config('analytics.container-id') }}');
+			'{{ config('analytics.tagmanager_id') }}');
 	</script>
 	<!-- End Google Tag Manager -->
 
@@ -79,7 +79,7 @@
 
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe
-			src="https://www.googletagmanager.com/ns.html?id={{ config('analytics.container-id') }}"
+			src="https://www.googletagmanager.com/ns.html?id={{ config('analytics.tagmanager_id') }}"
 			height="0"
 			width="0"
 			style="display:none;visibility:hidden"
