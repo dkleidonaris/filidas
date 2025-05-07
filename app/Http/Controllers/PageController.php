@@ -40,4 +40,16 @@ class PageController extends Controller
     public function my_reservation(){
         return view('pages.reservations.my-reservation');
     }
+
+    public function payment_methods(){
+        return view('pages.payment-methods');
+    }
+
+    public function terms(){
+        return view('pages.terms');
+    }
+
+    public function privacy_policy(){
+        return view('pages.privacy-policy');
+    }
 }
