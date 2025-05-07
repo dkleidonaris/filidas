@@ -1,7 +1,12 @@
 <?php
 
 return [
-    '/' => '/',
     'apartments' => 'apartments',
-    'apartments/{slug}' => 'apartments/{slug}'
+    'apartment' => 'apartments/{slug}',
+    'book' => 'prenotare',
+    'contact' => 'contact',
+    'my-reservation' => 'my-reservation',
+    'payment-methods' => 'payment-methods',
+    'terms' => 'terms',
+    'privacy-policy' => 'privacy-policy'
 ];

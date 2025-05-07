@@ -33,3 +33,21 @@ Breadcrumbs::for('book', function (BreadcrumbTrail $trail) {
     $trail->parent('index');
     $trail->push(__('Κάντε κράτηση'), route('book'));
 });
+
+// Payment Methods
+Breadcrumbs::for('payment-methods', function (BreadcrumbTrail $trail) {
+    $trail->parent('index');
+    $trail->push(__('Τρόποι πληρωμής'), route('payment-methods'));
+});
+
+// Terms of use
+Breadcrumbs::for('terms', function (BreadcrumbTrail $trail) {
+    $trail->parent('index');
+    $trail->push(__('Όροι χρήσης'), route('terms'));
+});
+
+// Privacy policy
+Breadcrumbs::for('privacy-policy', function (BreadcrumbTrail $trail) {
+    $trail->parent('index');
+    $trail->push(__('Πολιτική απορρήτου'), route('privacy-policy'));
+});

@@ -4,4 +4,6 @@ return [
     App\Providers\AppServiceProvider::class,
     App\Providers\TelescopeServiceProvider::class,
     App\Providers\VoltServiceProvider::class,
+    App\Providers\MacrosServiceProvider::class,
+    App\Providers\CookiesServiceProvider::class,
 ];

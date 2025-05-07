@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "826a05e1487af3a576dc1f2335427865",
+    "content-hash": "cebe59afd34d96a4a26b3ce4c233f5b4",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -463,113 +463,6 @@
                 }
             ],
             "time": "2024-09-19T14:15:21+00:00"
-        },
-        {
-            "name": "dartmoon/laravel-localized-routes",
-            "version": "v1.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dartmoon-io/laravel-localized-routes.git",
-                "reference": "318fd3b27e68b336ecb4abdae5aa4d2a99437195"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dartmoon-io/laravel-localized-routes/zipball/318fd3b27e68b336ecb4abdae5aa4d2a99437195",
-                "reference": "318fd3b27e68b336ecb4abdae5aa4d2a99437195",
-                "shasum": ""
-            },
-            "require": {
-                "dartmoon/laravel-route-helpers": "^1.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^7.24",
-                "pestphp/pest": "^1.23",
-                "pestphp/pest-plugin-laravel": "^1.4",
-                "pestphp/pest-plugin-parallel": "^1.2"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Dartmoon\\LaravelLocalizedRoutes\\LaravelLocalizedRoutesServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
-                "psr-4": {
-                    "Dartmoon\\LaravelLocalizedRoutes\\": "src/",
-                    "Dartmoon\\LaravelLocalizedRoutes\\App\\": "src/app"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dartmoon",
-                    "email": "hello@dartmoon.io"
-                }
-            ],
-            "description": "Localize laravel routes and views",
-            "support": {
-                "issues": "https://github.com/dartmoon-io/laravel-localized-routes/issues",
-                "source": "https://github.com/dartmoon-io/laravel-localized-routes/tree/v1.3.3"
-            },
-            "time": "2025-03-06T11:18:22+00:00"
-        },
-        {
-            "name": "dartmoon/laravel-route-helpers",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dartmoon-io/laravel-route-helpers.git",
-                "reference": "c965f7932164bb0bd055e380306853e50cdc420a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dartmoon-io/laravel-route-helpers/zipball/c965f7932164bb0bd055e380306853e50cdc420a",
-                "reference": "c965f7932164bb0bd055e380306853e50cdc420a",
-                "shasum": ""
-            },
-            "require-dev": {
-                "orchestra/testbench": "^7.24",
-                "pestphp/pest": "^1.23",
-                "pestphp/pest-plugin-laravel": "^1.4",
-                "pestphp/pest-plugin-parallel": "^1.2"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Dartmoon\\LaravelRouteHelper\\LaravelRouteHelperServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dartmoon\\LaravelRouteHelper\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dartmoon",
-                    "email": "hello@dartmoon.io"
-                }
-            ],
-            "description": "Set of helper for the Route facade",
-            "support": {
-                "issues": "https://github.com/dartmoon-io/laravel-route-helpers/issues",
-                "source": "https://github.com/dartmoon-io/laravel-route-helpers/tree/v1.0.0"
-            },
-            "time": "2023-05-16T16:06:47+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -4545,6 +4438,82 @@
                 "source": "https://github.com/MarkBaker/PHPMatrix/tree/3.0.1"
             },
             "time": "2022-12-02T22:17:43+00:00"
+        },
+        {
+            "name": "mcamara/laravel-localization",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcamara/laravel-localization.git",
+                "reference": "af91f489f518fb1907944de8622a19266159d28f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/af91f489f518fb1907944de8622a19266159d28f",
+                "reference": "af91f489f518fb1907944de8622a19266159d28f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^10.0|^11.0|^12.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "orchestra/testbench-browser-kit": "^8.5|^9.0|^10.0",
+                "phpunit/phpunit": "^10.1|^11.0"
+            },
+            "suggest": {
+                "ext-intl": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "LaravelLocalization": "Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization"
+                    },
+                    "providers": [
+                        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mcamara\\LaravelLocalization": "src/"
+                },
+                "classmap": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Cámara",
+                    "email": "mcamara88@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy localization for Laravel",
+            "homepage": "https://github.com/mcamara/laravel-localization",
+            "keywords": [
+                "laravel",
+                "localization",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/mcamara/laravel-localization/issues",
+                "source": "https://github.com/mcamara/laravel-localization/tree/v2.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/iwasherefirst2",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/mcamara",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-26T06:38:01+00:00"
         },
         {
             "name": "mews/purifier",
@@ -9285,6 +9254,81 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "whitecube/laravel-cookie-consent",
+            "version": "v1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/whitecube/laravel-cookie-consent.git",
+                "reference": "5a5fe0c07f903fd422511e5c9b712398ffe21218"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/whitecube/laravel-cookie-consent/zipball/5a5fe0c07f903fd422511e5c9b712398ffe21218",
+                "reference": "5a5fe0c07f903fd422511e5c9b712398ffe21218",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^9|^10|^11|^12",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^8.5|^9.0|^10.0",
+                "pestphp/pest": "^2.0|^3.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Cookies": "Whitecube\\LaravelCookieConsent\\Facades\\Cookies"
+                    },
+                    "providers": [
+                        "Whitecube\\LaravelCookieConsent\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Whitecube\\LaravelCookieConsent\\": "src/",
+                    "Whitecube\\LaravelCookieConsent\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Whitecube",
+                    "email": "hello@whitecube.be"
+                },
+                {
+                    "name": "Toon Van den Bos",
+                    "email": "toon@whitecube.be"
+                }
+            ],
+            "description": "Register, configure and ask for cookies consent in a EU-compliant way.",
+            "keywords": [
+                "compliant",
+                "cookies",
+                "eu",
+                "gdpr",
+                "laravel",
+                "whitecube"
+            ],
+            "support": {
+                "issues": "https://github.com/whitecube/laravel-cookie-consent/issues",
+                "source": "https://github.com/whitecube/laravel-cookie-consent/tree/v1.3.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/whitecube",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-04-16T11:03:42+00:00"
         },
         {
             "name": "zbateson/mail-mime-parser",

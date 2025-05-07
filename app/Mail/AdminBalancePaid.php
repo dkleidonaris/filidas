@@ -10,6 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class AdminBalancePaid extends Mailable implements ShouldQueue
 {

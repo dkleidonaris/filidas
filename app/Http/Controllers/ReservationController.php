@@ -87,7 +87,8 @@ class ReservationController extends Controller
 
         NewPayment::dispatch($payment);
 
-        return view('pages.reservations.payment', ['reservation' => $reservation, 'status' => $data['type']]);
+
+        return view('pages.reservations.payment', ['payment' => $payment, 'reservation' => $payment->reservation]);
     }
     /**
      * Show the form for editing the specified resource.

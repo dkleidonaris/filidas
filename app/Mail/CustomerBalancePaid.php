@@ -10,6 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CustomerBalancePaid extends Mailable implements ShouldQueue
 {
@@ -22,7 +23,7 @@ class CustomerBalancePaid extends Mailable implements ShouldQueue
      */
     public function __construct(public Payment $payment)
     {
-        $this->button_url = route_localized('reservation.show', ['reservation' => $this->payment->reservation, 'token' => $this->payment->reservation->access_token], $this->payment->reservation->customer->preferredLocale());
+        $this->button_url = LaravelLocalization::getURLFromRouteNameTranslated($this->payment->reservation->customer->preferredLocale(), 'reservation.show', ['reservation' => $this->payment->reservation, 'token' => $this->payment->reservation->access_token]);
     }
 
     /**

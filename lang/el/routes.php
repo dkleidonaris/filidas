@@ -1,7 +1,12 @@
 <?php
 
 return [
-    '/' => '/',
     'apartments' => 'διαμερίσματα',
-    'apartments/{slug}' => 'διαμερίσματα/{slug}'
+    'apartment' => 'διαμερίσματα/{slug}',
+    'book' => 'κάνε-κράτηση',
+    'contact' => 'επικοινωνία',
+    'my-reservation' => 'η-κράτησή-μου',
+    'payment-methods' => 'τρόποι-πληρωμής',
+    'terms' => 'όροι-χρήσης',
+    'privacy-policy' => 'πολιτική-απορρήτου'
 ];

@@ -27,22 +27,22 @@
 	>
 		<x-menu-item
 			route="index"
-			:name="__('ΑΡΧΙΚΗ')"
+			:name="Str::gr_strtoupper(__('Αρχική'), 'UTF-8')"
 		/>
 		<x-menu-item
 			route="apartments"
-			:name="__('ΤΑ ΔΙΑΜΕΡΙΣΜΑΤΑ')"
+			:name="Str::gr_strtoupper(__('Τα διαμερίσματα'), 'UTF-8')"
 		/>
 		<x-menu-item
 			route="contact"
-			:name="__('ΕΠΙΚΟΙΝΩΝΙΑ')"
+			:name="Str::gr_strtoupper(__('Επικοινωνία'), 'UTF-8')"
 		/>
 
 		<a
 			href="{{ route('book') }}"
 			:class="scrolled ? 'animate-none' : 'animate-blink'"
 			class="rounded-md bg-[#FF6B6B] p-2 text-white transition hover:scale-105 hover:animate-none"
-		>{{ __('ΚΑΝΤΕ ΚΡΑΤΗΣΗ') }}</a>
+		>{{Str::gr_strtoupper(__('Κάντε κράτηση'))}}</a>
 	</div>
 	{{-- Mobile Menu --}}
 	<div class="ml-auto md:hidden">
@@ -142,8 +142,8 @@
 				id="lang-switcher"
 				class="mx-auto flex flex-row items-center gap-4 md:flex"
 			>
-				@foreach (available_locales() as $locale)
-					<a href="{{ current_localized($locale) }}"><img
+				@foreach (LaravelLocalization::getSupportedLanguagesKeys() as $locale)
+					<a href="{{ LaravelLocalization::getLocalizedURL($locale) }}"><img
 							width="50"
 							src="https://flagsapi.com/{{ strtoupper(config('locales.flags.' . $locale)) }}/shiny/64.png"
 							alt="locale-{{ $locale }}"
@@ -157,8 +157,8 @@
 		id="lang-switcher"
 		class="ml-auto hidden flex-row items-center gap-4 md:flex"
 	>
-		@foreach (available_locales() as $locale)
-			<a href="{{ current_localized($locale) }}"><img
+		@foreach (LaravelLocalization::getSupportedLanguagesKeys() as $locale)
+			<a href="{{ LaravelLocalization::getLocalizedURL($locale) }}"><img
 					width="50"
 					src="https://flagsapi.com/{{ strtoupper(config('locales.flags.' . $locale)) }}/shiny/64.png"
 					alt="locale-{{ $locale }}"

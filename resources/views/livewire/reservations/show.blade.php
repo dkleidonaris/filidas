@@ -12,6 +12,8 @@ use Illuminate\Support\Str;
 new class extends Component {
     public $reservation;
 
+    public $acceptTerms = false;
+
     #[Locked]
     public $amount;
 
@@ -75,6 +77,11 @@ new class extends Component {
 
     public function payDeposit()
     {
+        if (!$this->acceptTerms) {
+            $this->addError('terms', __('messages.accept_terms'));
+            return;
+        }
+
         if ($this->amount_remaining <= 0) {
             $this->dispatch('flash-message', ['type' => 'danger', 'message' => __('Not possible!')]);
             return;
@@ -116,6 +123,11 @@ new class extends Component {
 
     public function payRemaining()
     {
+        if (!$this->acceptTerms) {
+            $this->addError('terms', __('messages.accept_terms'));
+            return;
+        }
+
         if ($this->amount_remaining <= 0) {
             $this->dispatch('flash-message', ['type' => 'danger', 'message' => __('Not possible!')]);
             return;
@@ -368,6 +380,20 @@ new class extends Component {
 						class="mx-auto w-full"
 						alt=""
 					>
+				</div>
+				<div class="mt-4 rounded-md bg-slate-300 p-4">
+					<label class="flex items-center gap-2">
+						<input
+							type="checkbox"
+							wire:model="acceptTerms"
+						>
+						<span>{{ __('payment.accept_terms') }}</span>
+					</label>
+					@error('terms')
+						<span class="mt-2 text-red-500">{{ $message }}</span>
+					@enderror
+					<small
+						class="mt-2 block text-gray-600">{{ __('payment.security') }}</small>
 				</div>
 			@endif
 			<div class="flex flex-col gap-2 md:flex-row">
