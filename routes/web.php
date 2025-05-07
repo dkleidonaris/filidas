@@ -34,7 +34,7 @@ Route::group(
             Route::get('/', [ReservationController::class, 'show'])->name('show');
             Route::get('/receipt', [ReservationController::class, 'receipt'])->name('receipt');
 
-            Route::get('payment', [ReservationController::class, 'payment'])->name('payment');
+            Route::post('payment', [ReservationController::class, 'payment'])->name('payment');
         });
     }
 );
