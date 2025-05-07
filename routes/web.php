@@ -30,7 +30,7 @@ Route::group(
         Route::get(LaravelLocalization::transRoute('routes.cookie-policy'), [PageController::class, 'cookie_policy'])->name('cookie-policy');
 
 
-        Route::group([ 'prefix' => 'reservation/{reservation}/{token}', 'as' => 'reservation.'], function () {
+        Route::group(['middleware' => 'reservation_access_check', 'prefix' => 'reservation/{reservation}/{token}', 'as' => 'reservation.'], function () {
             Route::get('/', [ReservationController::class, 'show'])->name('show');
             Route::get('/receipt', [ReservationController::class, 'receipt'])->name('receipt');
 
