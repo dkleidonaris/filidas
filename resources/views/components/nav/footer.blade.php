@@ -32,30 +32,30 @@
 			<h3 class="mb-4 text-xl font-semibold">@lang('Χρήσιμοι σύνδεσμοι')</h3>
 			<ul class="space-y-2">
 				<li><a
-						href="{{route('privacy-policy')}}"
+						href="{{ route('terms') }}"
+						class="hover:text-white"
+					>@lang('Όροι χρήσης')</a></li>
+				<li><a
+						href="{{ route('privacy-policy') }}"
 						class="hover:text-white"
 					>@lang('Πολιτική απορρήτου')</a></li>
 				<li><a
-						href="{{route('terms')}}"
-						class="hover:text-white"
-					>@lang('Όροι χρήσης')</a></li>
-                    <li><a
-						href="{{route('payment-methods')}}"
+						href="{{ route('payment-methods') }}"
 						class="hover:text-white"
 					>@lang('Τρόποι πληρωμής')</a></li>
 				<li><a
-						href="{{route('cookie-policy')}}"
+						href="{{ route('cookie-policy') }}"
 						class="hover:text-white"
 					>@lang('Πολιτική cookies')</a></li>
-                    <li>
-                        <button 
-                            type="button" 
-                            onclick="LaravelCookieConsent.reset()" 
-                            class="bg-gray-700 text-gray-300 py-2 px-4 rounded-lg transition-all duration-300 ease-in-out hover:bg-gray-600 hover:text-white shadow-md"
-                        >
-                            @lang('Αλλαγή προτιμήσεων cookies')
-                        </button>
-                    </li>
+				<li>
+					<button
+						type="button"
+						onclick="LaravelCookieConsent.reset()"
+						class="rounded-lg bg-gray-700 px-4 py-2 text-gray-300 shadow-md transition-all duration-300 ease-in-out hover:bg-gray-600 hover:text-white"
+					>
+						@lang('Αλλαγή προτιμήσεων cookies')
+					</button>
+				</li>
 			</ul>
 		</div>
 
