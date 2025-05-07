@@ -44,7 +44,7 @@
 						class="hover:text-white"
 					>@lang('Τρόποι πληρωμής')</a></li>
 				<li><a
-						href="#"
+						href="{{route('cookie-policy')}}"
 						class="hover:text-white"
 					>@lang('Πολιτική cookies')</a></li>
                     <li>

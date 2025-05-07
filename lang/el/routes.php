@@ -8,5 +8,6 @@ return [
     'my-reservation' => 'η-κράτησή-μου',
     'payment-methods' => 'τρόποι-πληρωμής',
     'terms' => 'όροι-χρήσης',
-    'privacy-policy' => 'πολιτική-απορρήτου'
+    'privacy-policy' => 'πολιτική-απορρήτου',
+    'cookie-policy' => 'πολιτική-cookies'
 ];

@@ -27,6 +27,7 @@ Route::group(
         Route::get(LaravelLocalization::transRoute('routes.payment-methods'), [PageController::class, 'payment_methods'])->name('payment-methods');
         Route::get(LaravelLocalization::transRoute('routes.terms'), [PageController::class, 'terms'])->middleware('localeViewPath')->name('terms');
         Route::get(LaravelLocalization::transRoute('routes.privacy-policy'), [PageController::class, 'privacy_policy'])->middleware('localeViewPath')->name('privacy-policy');
+        Route::get(LaravelLocalization::transRoute('routes.cookie-policy'), [PageController::class, 'cookie_policy'])->name('cookie-policy');
 
 
         Route::group([ 'prefix' => 'reservation/{reservation}/{token}', 'as' => 'reservation.'], function () {

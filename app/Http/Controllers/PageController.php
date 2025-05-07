@@ -52,4 +52,8 @@ class PageController extends Controller
     public function privacy_policy(){
         return view('pages.privacy-policy');
     }
+
+    public function cookie_policy(){
+        return view('pages.cookie-policy');
+    }
 }

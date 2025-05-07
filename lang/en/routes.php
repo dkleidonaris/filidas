@@ -8,5 +8,6 @@ return [
     'my-reservation' => 'my-reservation',
     'payment-methods' => 'payment-methods',
     'terms' => 'terms',
-    'privacy-policy' => 'privacy-policy'
+    'privacy-policy' => 'privacy-policy',
+    'cookie-policy' => 'cookie-policy'
 ];

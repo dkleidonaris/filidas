@@ -340,5 +340,7 @@
     "Στοιχεία πληρωμής": "Payment details",
     "Ημ/νία συναλλαγής": "Transaction date",
     "Εκτύπωση Απόδειξης": "Print receipt",
-    "Σελίδα κράτησης": "Reservation page"
+    "Σελίδα κράτησης": "Reservation page",
+    "cookie-policy.1": "Our website uses cookies to improve your browsing experience, analyze website traffic, and enhance site functionality. Below is a detailed overview of the different types of cookies we use, their purposes, and their retention periods. This information helps you understand how your data is managed and allows you to make informed choices regarding your privacy.",
+    "cookie-policy.2": "You can find specific details in the table below, which outlines the necessary cookies required for the core functioning of the site as well as analytics cookies that provide valuable insights to improve our services."
 }

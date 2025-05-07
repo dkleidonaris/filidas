@@ -51,3 +51,9 @@ Breadcrumbs::for('privacy-policy', function (BreadcrumbTrail $trail) {
     $trail->parent('index');
     $trail->push(__('Πολιτική απορρήτου'), route('privacy-policy'));
 });
+
+// Cookie policy
+Breadcrumbs::for('cookie-policy', function (BreadcrumbTrail $trail) {
+    $trail->parent('index');
+    $trail->push(__('Πολιτική cookies'), route('cookie-policy'));
+});

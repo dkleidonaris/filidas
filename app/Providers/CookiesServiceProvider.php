@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Whitecube\LaravelCookieConsent\CookiesServiceProvider as ServiceProvider;
 use Whitecube\LaravelCookieConsent\Facades\Cookies;
+use Whitecube\LaravelCookieConsent\Consent;
 
 class CookiesServiceProvider extends ServiceProvider
 {
@@ -30,5 +31,10 @@ class CookiesServiceProvider extends ServiceProvider
         //     ->description('This cookie helps us remember your preferences regarding the interface\'s brightness.')
         //     ->duration(120)
         //     ->accepted(fn(Consent $consent, MyDarkmode $darkmode) => $consent->cookie(value: $darkmode->getDefaultValue()));
+
+        // Cookies::analytics()
+        //     ->name('_ga')
+        //     ->description('cookies._ga')
+        //     ->duration(120);
     }
 }
