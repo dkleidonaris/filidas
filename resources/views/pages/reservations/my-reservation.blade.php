@@ -1,4 +1,4 @@
-@extends('layouts.guest', ['navPosition' => 'sticky', 'menuWithBg' => true])
+@extends('layouts.protected-guest', ['navPosition' => 'sticky', 'menuWithBg' => true])
 
 @section('header', __('Η κράτησή μου'))
 
