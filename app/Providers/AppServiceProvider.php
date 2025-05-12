@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
 
     use \Mcamara\LaravelLocalization\Traits\LoadsTranslatedCachedRoutes;
+    
     public function register(): void
     {
         //

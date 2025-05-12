@@ -33,7 +33,6 @@ Route::group(
         Route::group(['middleware' => 'reservation_access_check', 'prefix' => 'reservation/{reservation}/{token}', 'as' => 'reservation.'], function () {
             Route::get('/', [ReservationController::class, 'show'])->name('show');
             Route::get('/receipt', [ReservationController::class, 'receipt'])->name('receipt');
-
             Route::post('payment', [ReservationController::class, 'payment'])->name('payment');
         });
     }

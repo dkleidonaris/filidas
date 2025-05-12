@@ -10,6 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class ReservationDetails extends Mailable
 {
@@ -23,7 +24,7 @@ class ReservationDetails extends Mailable
 
     public function __construct(public Reservation $reservation)
     {
-        $this->button_url = route_localized('reservation.show', ['reservation' => $reservation, 'token' => $reservation->access_token], $reservation->customer->preferredLocale());
+        $this->button_url = LaravelLocalization::getURLFromRouteNameTranslated($this->reservation->customer->preferredLocale(), 'reservation.show', ['reservation' => $this->reservation, 'token' => $this->reservation->access_token]);
     }
 
     /**
