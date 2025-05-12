@@ -24,7 +24,10 @@ class ReservationDetails extends Mailable
 
     public function __construct(public Reservation $reservation)
     {
-        $this->button_url = LaravelLocalization::getURLFromRouteNameTranslated($this->reservation->customer->preferredLocale(), 'reservation.show', ['reservation' => $this->reservation, 'token' => $this->reservation->access_token]);
+        $this->button_url = LaravelLocalization::localizeUrl(
+            route("reservation.show", [$this->reservation, $this->reservation->access_token]),
+            $this->reservation->customer->preferredLocale()
+        );
     }
 
     /**

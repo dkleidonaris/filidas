@@ -22,7 +22,10 @@ class CustomerDepositPaid extends Mailable implements ShouldQueue
      */
     public function __construct(public Payment $payment)
     {
-        $this->button_url = LaravelLocalization::getURLFromRouteNameTranslated($this->payment->reservation->customer->preferredLocale(), 'reservation.show', ['reservation' => $this->payment->reservation, 'token' => $this->payment->reservation->access_token]);
+        $this->button_url = $this->button_url = LaravelLocalization::localizeUrl(
+            route("reservation.show", [$this->payment->reservation, $this->payment->reservation->access_token]),
+            $this->payment->reservation->customer->preferredLocale()
+        );
     }
 
     /**
