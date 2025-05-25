@@ -3,14 +3,28 @@
 <div
 	id="nav"
 	x-data="{ scrolled: false, mobMenuShow: false }"
-	@if (!$menuWithBg) x-init="window.addEventListener('scroll', () => {
-    const trigger = document.getElementById('hero').offsetHeight;
-    scrolled = window.scrollY > trigger;
-})" @endif
+	@if (!$menuWithBg) x-init="let lastKnownScrollY = 0;
+    let ticking = false;
+    const trigger = document.getElementById('hero')?.offsetHeight ?? 100;
+
+    function onScroll() {
+        lastKnownScrollY = window.scrollY;
+
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                scrolled = lastKnownScrollY > trigger;
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll);" @endif
 	@if (!$menuWithBg) :class="scrolled ? 'bg-white shadow-md' : 'bg-transparent'" @endif
 	class="{{ $navPosition }} {{ $menuWithBg ? 'bg-white shadow-md' : '' }} left-0 top-0 z-50 flex w-full flex-row items-center gap-8 p-4 transition-all duration-300"
 	x-cloak
 >
+
 	{{-- Logo --}}
 	<div>
 		<a href="{{ route('index') }}">
@@ -42,8 +56,9 @@
 			href="{{ route('book') }}"
 			:class="scrolled ? 'animate-none' : 'animate-blink'"
 			class="rounded-md bg-[#FF6B6B] p-2 text-white transition hover:scale-105 hover:animate-none"
-		>{{Str::gr_strtoupper(__('Κάντε κράτηση'))}}</a>
+		>{{ Str::gr_strtoupper(__('Κάντε κράτηση')) }}</a>
 	</div>
+	<x-nav.social-icons />
 	{{-- Mobile Menu --}}
 	<div class="ml-auto md:hidden">
 		<svg
@@ -132,11 +147,20 @@
 				<a
 					href="{{ route('index') }}"
 					class="@if (Route::is('index')) font-bold border bg-gray-300 @endif p-1"
-				>{{ __('ΑΡΧΙΚΗ') }}</a>
+				>{{ Str::gr_strtoupper(__('Αρχική')) }}</a>
 				<a
 					href="{{ route('apartments') }}"
 					class="@if (Route::is('apartments')) font-bold border bg-gray-300 @endif p-1"
-				>{{ __('ΤΑ ΔΙΑΜΕΡΙΣΜΑΤΑ') }}</a>
+				>{{ Str::gr_strtoupper(__('Τα διαμερίσματα')) }}</a>
+				<a
+					href="{{ route('contact') }}"
+					class="@if (Route::is('contact')) font-bold border bg-gray-300 @endif p-1"
+				>{{ Str::gr_strtoupper(__('Επικοινωνία')) }}</a>
+				<a
+					href="{{ route('book') }}"
+					:class="scrolled ? 'animate-none' : 'animate-blink'"
+					class="self-center rounded-md bg-[#FF6B6B] p-2 text-white transition hover:scale-105 hover:animate-none"
+				>{{ Str::gr_strtoupper(__('Κάντε κράτηση')) }}</a>
 			</div>
 			<div
 				id="lang-switcher"

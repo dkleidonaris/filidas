@@ -1,11 +1,11 @@
-@props(['apartment'])
+@props(['features'])
 
 <div
 	class="my-4 grid gap-8 md:grid-cols-2"
 	x-data="shown"
 	x-intersect="showFeatures"
 >
-	@if ($apartment->features->contains('key', 'balcony'))
+	@if ($features->contains('key', 'balcony'))
 		<div
 			data-feature
 			:class="shown.includes(0) ? 'opacity-100' : 'opacity-0'"
@@ -84,10 +84,10 @@
 					></path>
 				</g>
 			</svg>
-			<p>{{ __('Μεγάλα μπαλκόνια με άπλετη θέα') }}</p>
+			<p>{{$features->firstWhere('key', 'balcony')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'living_room_fireplace'))
+	@if ($features->contains('key', 'living_room_fireplace'))
 		<div
 			data-feature
 			:class="shown.includes(1) ? 'opacity-100' : 'opacity-0'"
@@ -120,10 +120,10 @@
 					></path>
 				</g>
 			</svg>
-			<p>{{ __('Σαλόνι με τζάκι') }}</p>
+			<p>{{$features->firstWhere('key', 'living_room_fireplace')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'ac'))
+	@if ($features->contains('key', 'ac'))
 		<div
 			data-feature
 			:class="shown.includes(2) ? 'opacity-100' : 'opacity-0'"
@@ -156,10 +156,10 @@
 					></path>
 				</g>
 			</svg>
-			<p>{{ __('Κλιματισμός') }}</p>
+			<p>{{$features->firstWhere('key', 'ac')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'wi-fi'))
+	@if ($features->contains('key', 'wi-fi'))
 		<div
 			data-feature
 			:class="shown.includes(3) ? 'opacity-100' : 'opacity-0'"
@@ -196,10 +196,10 @@
 					></path>
 				</g>
 			</svg>
-			<p>{{ __('Wi-Fi') }}</p>
+			<p>{{$features->firstWhere('key', 'wi-fi')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', '42_tv'))
+	@if ($features->contains('key', '42_tv'))
 		<div
 			data-feature
 			:class="shown.includes(4) ? 'opacity-100' : 'opacity-0'"class="flex items-center gap-2 transition"
@@ -232,10 +232,10 @@
 					<g> </g>
 				</g>
 			</svg>
-			<p>{{ __('42"  TV') }}</p>
+			<p>{{$features->firstWhere('key', '42_tv')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'dining_table'))
+	@if ($features->contains('key', 'dining_table'))
 		<div
 			data-feature
 			:class="shown.includes(5) ? 'opacity-100' : 'opacity-0'"
@@ -287,10 +287,10 @@
 					</g>
 				</g>
 			</svg>
-			<p>{{ __('Τραπεζαρία') }}</p>
+			<p>{{$features->firstWhere('key', 'dining_table')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'full_kitchen'))
+	@if ($features->contains('key', 'full_kitchen'))
 		<div
 			data-feature
 			:class="shown.includes(6) ? 'opacity-100' : 'opacity-0'"
@@ -320,10 +320,10 @@
 					></path>
 				</g>
 			</svg>
-			<p>{{ __('Πλήρως εξοπλισμένη κουζίνα') }}</p>
+			<p>{{$features->firstWhere('key', 'full_kitchen')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'fridge'))
+	@if ($features->contains('key', 'fridge'))
 		<div
 			data-feature
 			:class="shown.includes(7) ? 'opacity-100' : 'opacity-0'"
@@ -372,10 +372,10 @@
 					></path>
 				</g>
 			</svg>
-			<p>{{ __('Ψυγείο') }}</p>
+			<p>{{$features->firstWhere('key', 'fridge')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'cooker'))
+	@if ($features->contains('key', 'cooker'))
 		<div
 			data-feature
 			:class="shown.includes(8) ? 'opacity-100' : 'opacity-0'"
@@ -534,10 +534,10 @@
 					</g>
 				</g>
 			</svg>
-			<p>{{ __('Ηλεκτρική κουζίνα') }}</p>
+			<p>{{$features->firstWhere('key', 'cooker')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'espresso_machine'))
+	@if ($features->contains('key', 'espresso_machine'))
 		<div
 			data-feature
 			:class="shown.includes(9) ? 'opacity-100' : 'opacity-0'"
@@ -572,10 +572,10 @@
 					</g>
 				</g>
 			</svg>
-			<p>{{ __('Καφετιέρα Espresso') }}</p>
+			<p>{{$features->firstWhere('key', 'espresso_machine')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'microwave'))
+	@if ($features->contains('key', 'microwave'))
 		<div
 			data-feature
 			:class="shown.includes(10) ? 'opacity-100' : 'opacity-0'"
@@ -604,10 +604,10 @@
 					></path>
 				</g>
 			</svg>
-			<p>{{ __('Φούρνος μικροκυμάτων') }}</p>
+			<p>{{$features->firstWhere('key', 'microwave')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'toaster'))
+	@if ($features->contains('key', 'toaster'))
 		<div
 			data-feature
 			x-show="shown.includes(11)"
@@ -637,10 +637,10 @@
 					></path>
 				</g>
 			</svg>
-			<p>{{ __('Τοστιέρα') }}</p>
+			<p>{{$features->firstWhere('key', 'toaster')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'water_boiler'))
+	@if ($features->contains('key', 'water_boiler'))
 		<div
 			data-feature
 			x-show="shown.includes(12)"
@@ -709,10 +709,10 @@
 					></rect>
 				</g>
 			</svg>
-			<p>{{ __('Βραστήρας') }}</p>
+			<p>{{$features->firstWhere('key', 'water_boiler')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'cozy_bedroom'))
+	@if ($features->contains('key', 'cozy_bedroom'))
 		<div
 			data-feature
 			x-show="shown.includes(13)"
@@ -779,10 +779,10 @@
 					</g>
 				</g>
 			</svg>
-			<p>{{ __('Άνετη κρεβατοκάμαρα') }}</p>
+			<p>{{$features->firstWhere('key', 'cozy_bedroom')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'bathroom'))
+	@if ($features->contains('key', 'bathroom'))
 		<div
 			data-feature
 			x-show="shown.includes(14)"
@@ -817,10 +817,10 @@
 					></path>
 				</g>
 			</svg>
-			<p>{{ __('Μπάνιο') }}</p>
+			<p>{{$features->firstWhere('key', 'bathroom')->name}}</p>
 		</div>
 	@endif
-	@if ($apartment->features->contains('key', 'washing_clothes'))
+	@if ($features->contains('key', 'washing_clothes'))
 		<div
 			data-feature
 			x-show="shown.includes(15)"
@@ -942,7 +942,7 @@
 					</g>
 				</g>
 			</svg>
-			<p>{{ __('Πλυντήριο ρούχων') }}</p>
+			<p>{{$features->firstWhere('key', 'washing_clothes')->name}}</p>
 		</div>
 	@endif
 </div>
@@ -951,19 +951,6 @@
 	document.addEventListener('alpine:init', () => {
 		Alpine.data('shown', () => ({
 			shown: [],
-			init() {
-				// this.$nextTick(() => {
-				// 	document.querySelectorAll(
-				// 		'[data-feature]').forEach((
-				// 		el, index) => {
-				// 		setTimeout(() => {
-				// 			this.shown.push(
-				// 				index
-				// 				)
-				// 		}, 100 * index)
-				// 	});
-				// });
-			},
 			showFeatures() {
 				document.querySelectorAll(
 					'[data-feature]').forEach((

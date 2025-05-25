@@ -15,67 +15,68 @@ class FeatureSeeder extends Seeder
     {
         Feature::create([
             'key' => 'balcony',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Μπαλκόνι', 'en' => 'Balcony', 'it' => 'Balcone']
         ]);
         Feature::create([
             'key' => 'living_room_fireplace',
-            'name' => ['el' => 'Σαλόνι με τζάκι']
+            'name' => ['el' => 'Σαλόνι με τζάκι', 'en' => 'Living room with fireplace', 'it' => 'Soggiorno con camino']
         ]);
         Feature::create([
             'key' => 'ac',
-            'name' => ['el' => 'Κλιματισμός']
+            'name' => ['el' => 'Κλιματισμός', 'en' => 'Air conditioning', 'it' => 'Aria condizionata']
         ]);
         Feature::create([
             'key' => 'wi-fi',
-            'name' => ['el' => 'Wi-Fi']
+            'name' => ['el' => 'Wi-Fi', 'en' => 'Wi-Fi', 'it' => 'Wi-Fi']
         ]);
         Feature::create([
             'key' => '42_tv',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Τηλεόραση 42"', 'en' => '42" TV', 'it' => 'TV da 42"']
         ]);
         Feature::create([
             'key' => 'dining_table',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Τραπέζι φαγητού', 'en' => 'Dining table', 'it' => 'Tavolo da pranzo']
         ]);
         Feature::create([
             'key' => 'full_kitchen',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Πλήρως εξοπλισμένη κουζίνα', 'en' => 'Fully equipped kitchen', 'it' => 'Cucina completamente attrezzata']
         ]);
         Feature::create([
             'key' => 'fridge',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Ψυγείο', 'en' => 'Fridge', 'it' => 'Frigorifero']
         ]);
         Feature::create([
             'key' => 'cooker',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Κουζίνα μαγειρέματος', 'en' => 'Stove', 'it' => 'Cucina']
         ]);
         Feature::create([
             'key' => 'espresso_machine',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Μηχανή εσπρέσο', 'en' => 'Espresso machine', 'it' => 'Macchina da caffè espresso']
         ]);
         Feature::create([
             'key' => 'microwave',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Φούρνος μικροκυμάτων', 'en' => 'Microwave', 'it' => 'Microonde']
         ]);
         Feature::create([
             'key' => 'toaster',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Φρυγανιέρα', 'en' => 'Toaster', 'it' => 'Tostapane']
         ]);
         Feature::create([
             'key' => 'water_boiler',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Βραστήρας νερού', 'en' => 'Water boiler', 'it' => 'Bollitore']
         ]);
         Feature::create([
             'key' => 'cozy_bedroom',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Άνετο υπνοδωμάτιο', 'en' => 'Cozy bedroom', 'it' => 'Camera da letto accogliente']
         ]);
         Feature::create([
             'key' => 'bathroom',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Μπάνιο', 'en' => 'Bathroom', 'it' => 'Bagno']
         ]);
         Feature::create([
             'key' => 'washing_clothes',
-            'name' => ['el' => 'Μπαλκόνι']
+            'name' => ['el' => 'Πλυντήριο ρούχων', 'en' => 'Washing machine', 'it' => 'Lavatrice']
         ]);
+
     }
 }

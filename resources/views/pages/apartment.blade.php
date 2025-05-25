@@ -9,10 +9,9 @@
 @section('body')
 	<div class="mx-auto flex max-w-[1200px] flex-col gap-4 p-4 text-justify">
 		<div class="grid md:grid-cols-2">
-			<x-galleries.carousel :$apartment />
 			<div>
 				<div class="flex flex-row items-center gap-4">
-					<p class="text-lg font-bold">{{__('Χωρητικότητα')}}:</p>
+					<p class="text-lg font-bold">{{ __('Χωρητικότητα') }}:</p>
 					<div class="flex items-center gap-2">
 						<svg
 							class="w-[40px]"
@@ -79,8 +78,10 @@
 				</div>
 			</div>
 		</div>
+		<hr class="h-px my-4 bg-gray-200 border-0">
+		<x-galleries.carousel :photos="$apartment->photos" />
 		<p>To διαμέρισμα περιλαμβάνει:</p>
-		<x-features :apartment=$apartment />
+		<x-features :features="$apartment->features" />
 		<p>και μπορεί να καλύψει κάθε οικογενειακή ανάγκη. Επιπλέον παροχές παρέχονται
 			κατόπιν αιτήματος.</p>
 		<p>Τα Filidas Apartments βρίσκονται στην προέκταση της ομώνυμης οδού του

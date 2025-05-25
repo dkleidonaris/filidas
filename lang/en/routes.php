@@ -3,7 +3,7 @@
 return [
     'apartments' => 'apartments',
     'apartment' => 'apartments/{slug}',
-    'book' => 'prenotare',
+    'book' => 'book',
     'contact' => 'contact',
     'my-reservation' => 'my-reservation',
     'payment-methods' => 'payment-methods',

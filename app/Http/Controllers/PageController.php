@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photo;
+use App\Models\Feature;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 
@@ -9,12 +11,18 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('pages.index');
+        return view('pages.index', [
+            'apartments' => Apartment::all()
+        ]);
     }
 
     public function apartments()
     {
-        return view('pages.apartments');
+        return view('pages.apartments', [
+            'photos' => Photo::where('is_general_photo', true)->get(),
+            'features' => Feature::all(),
+            'apartments' => Apartment::all()
+        ]);
     }
 
     public function apartment($slug)
@@ -37,23 +45,28 @@ class PageController extends Controller
         return view('pages.book');
     }
 
-    public function my_reservation(){
+    public function my_reservation()
+    {
         return view('pages.reservations.my-reservation');
     }
 
-    public function payment_methods(){
+    public function payment_methods()
+    {
         return view('pages.payment-methods');
     }
 
-    public function terms(){
+    public function terms()
+    {
         return view('pages.terms');
     }
 
-    public function privacy_policy(){
+    public function privacy_policy()
+    {
         return view('pages.privacy-policy');
     }
 
-    public function cookie_policy(){
+    public function cookie_policy()
+    {
         return view('pages.cookie-policy');
     }
 }
