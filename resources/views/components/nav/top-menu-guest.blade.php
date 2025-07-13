@@ -55,7 +55,7 @@
 		<a
 			href="{{ route('book') }}"
 			:class="scrolled ? 'animate-none' : 'animate-blink'"
-			class="rounded-md bg-[#FF6B6B] p-2 text-white transition hover:scale-105 hover:animate-none"
+			class="rounded-md bg-lime-500 p-2 text-white transition hover:scale-105 hover:animate-none"
 		>{{ Str::gr_strtoupper(__('Κάντε κράτηση')) }}</a>
 	</div>
 	<x-nav.social-icons />
@@ -159,7 +159,7 @@
 				<a
 					href="{{ route('book') }}"
 					:class="scrolled ? 'animate-none' : 'animate-blink'"
-					class="self-center rounded-md bg-[#FF6B6B] p-2 text-white transition hover:scale-105 hover:animate-none"
+					class="self-center rounded-md bg-lime-500 p-2 text-white transition hover:scale-105 hover:animate-none"
 				>{{ Str::gr_strtoupper(__('Κάντε κράτηση')) }}</a>
 			</div>
 			<div

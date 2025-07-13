@@ -25,7 +25,7 @@
 					class="flex-shrink-0 px-4"
 					:style="`width: ${slideWidth}px`"
 				>
-					<div class="flex flex-col gap-2 rounded-md bg-white p-2 shadow-md">
+					<div class="flex flex-col gap-2 rounded-md bg-slate-200 p-2 shadow-md">
 						<a
 							href="{{ route('apartment', [$apartment->slug]) }}"
 							class="text-center text-lg font-semibold"
