@@ -18,8 +18,8 @@ Route::group(
         });
 
         Route::get('/', [PageController::class, 'index'])->name('index');
-        Route::get(LaravelLocalization::transRoute('routes.apartments'), [PageController::class, 'apartments'])->name('apartments');
-        Route::get(LaravelLocalization::transRoute('routes.apartment'), [PageController::class, 'apartment'])->name('apartment');
+        Route::get(LaravelLocalization::transRoute('routes.apartments'), [PageController::class, 'apartments'])->middleware('localeViewPath')->name('apartments');
+        Route::get(LaravelLocalization::transRoute('routes.apartment'), [PageController::class, 'apartment'])->middleware('localeViewPath')->name('apartment');
         Route::get(LaravelLocalization::transRoute('routes.contact'), [PageController::class, 'contact'])->name('contact');
         Route::get(LaravelLocalization::transRoute('routes.book'), [PageController::class, 'book'])->name('book');
         Route::get(LaravelLocalization::transRoute('routes.my-reservation'), [PageController::class, 'my_reservation'])->name('my-reservation');
