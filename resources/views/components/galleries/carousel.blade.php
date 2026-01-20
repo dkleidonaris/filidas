@@ -1,4 +1,4 @@
-@props(['apartment'])
+@props(['photos'])
 
 <div
 	x-data="gallery_carousel()"
@@ -6,26 +6,24 @@
 >
 
 	<div
-		class="carousel relative my-4 flex h-screen max-h-[40vh] w-full items-center justify-between"
+		class="carousel relative mx-auto flex h-screen max-h-[70vh] max-w-3xl items-center justify-between"
 	>
-		<template x-for="(photo, index) in photos">
-			<img
-				x-show="currentIndex == index"
-				x-transition:enter="transition ease-out duration-300"
-				x-transition:enter-start="opacity-0"
-				x-transition:enter-end="opacity-100"
-				x-transition:leave="transition ease-in duration-300"
-				x-transition:leave-start="opacity-100"
-				x-transition:leave-end="opacity-0"
-				:src="photo.path"
-				alt="apartment-photo"
-				class="absolute inset-0 h-full w-full object-contain"
-			>
-		</template>
+
+		<img
+			x-transition:enter="transition ease-out duration-300"
+			x-transition:enter-start="opacity-0"
+			x-transition:enter-end="opacity-100"
+			x-transition:leave="transition ease-in duration-300"
+			x-transition:leave-start="opacity-100"
+			x-transition:leave-end="opacity-0"
+			:src="activeSrc"
+			alt="apartment-photo"
+			class="absolute inset-0 mx-auto h-full select-none object-contain"
+		>
 
 		<svg
 			@click="prev"
-			class="z-10 w-[30px] cursor-pointer rounded-r-md bg-white p-1 transition hover:scale-110 focus:outline-none focus:ring-0"
+			class="z-10 w-[40px] cursor-pointer rounded-r-md bg-white p-1 transition hover:scale-110 focus:outline-none focus:ring-0"
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +58,7 @@
 		</svg>
 		<svg
 			@click="next"
-			class="z-10 w-[30px] rotate-180 cursor-pointer rounded-r-md bg-white p-1 transition hover:scale-110 focus:outline-none focus:ring-0"
+			class="z-10 w-[40px] rotate-180 cursor-pointer rounded-r-md bg-white p-1 transition hover:scale-110 focus:outline-none focus:ring-0"
 			viewBox="-2.4 -2.4 28.80 28.80"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
@@ -112,10 +110,12 @@
 		Alpine.data('gallery_carousel', () => ({
 			photos: [],
 			currentIndex: null,
+			activeSrc: null,
 			init() {
-				this.photos = @json($apartment->photos);
+				this.photos = @json($photos);
 				if (this.photos.length >= 1) {
 					this.currentIndex = 0;
+					this.loadPhoto();
 				}
 			},
 			prev() {
@@ -123,6 +123,8 @@
 					this.currentIndex = this.photos.length - 1;
 				} else
 					this.currentIndex--;
+
+				this.loadPhoto();
 			},
 			next() {
 				if (this.currentIndex == this.photos.length -
@@ -130,6 +132,12 @@
 					this.currentIndex = 0;
 				} else
 					this.currentIndex++;
+
+				this.loadPhoto();
+			},
+			loadPhoto() {
+				this.activeSrc = this.photos[this.currentIndex]
+					.path;
 			}
 		}));
 	});

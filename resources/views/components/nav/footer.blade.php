@@ -70,13 +70,13 @@
 					@lang('business-address')
 				</li>
 				<li>
-					Phone: <a href="tel:+306937079820">+30 693 7079 820</a>
+					Tel: <a href="tel:+306937079820">+30 693 7079 820</a>
 				</li>
 				<li>Email: <a href="mailto:info@filidas.gr">info@filidas.gr</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="mt-8 border-t border-gray-700 pt-4 text-center">
-		<p>&copy; {{ date('Y') }} @lang('Διαμερίσματα FILIDAS'). @lang('rights-reserved').</p>
+		<p>&copy; {{ date('Y') }} @lang('Διαμερίσματα FILIDAS'). @lang('rights-reserved'). <span class="ml-2">Powered by <a href="https://dkleidonaris.com">Kleidonaris Dimitris</a></span></p>
 	</div>
 </footer>
