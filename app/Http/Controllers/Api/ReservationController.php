@@ -14,21 +14,32 @@ class ReservationController extends Controller
     {
         $data = $request->all();
 
-        $digestString =
-            $data['version'] .
-            $data['mid'] .
-            $data['orderid'] .
-            $data['status'] .
-            $data['orderAmount'] .
-            $data['currency'] .
-            $data['paymentTotal'] .
-            $data['riskScore'] .
-            (isset($data['payMethod']) ? $data['payMethod'] : '') .
-            $data['txId'] .
-            (isset($data['paymentRef']) ? $data['paymentRef'] : '') .
-            config('nexi.' . config('nexi.active_env') . '.secret');
+        $fields = [
+            'version',
+            'mid',
+            'orderid',
+            'status',
+            'orderAmount',
+            'currency',
+            'paymentTotal',
+            'message',
+            'riskScore',
+            'payMethod',
+            'txId',
+            'Sequence',
+            'SeqTxId',
+            'paymentRef'
+        ];
 
-        $calculatedDigest = base64_encode(hash('sha256', $digestString, true));
+        $values = array_map(fn($f) => $data[$f] ?? '', $fields);
+
+        $string = implode('', $values)
+            . config('nexi.' . config('nexi.active_env') . '.secret');
+
+        // Ensure UTF-8 (safe guard)
+        $string = mb_convert_encoding($string, 'UTF-8', 'UTF-8');
+
+        $calculatedDigest = base64_encode(hash('sha256', $string, true));
 
         if ($calculatedDigest !== $data['digest']) {
             abort(403, 'Invalid digest (possible tampering)');
